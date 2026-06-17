@@ -61,6 +61,21 @@ def lunes():
         })
         
     return jsonify(actividades_lunes)
+@app.route("/Martes")
+def Martes():
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    cursor.execute("Select * from Marte")
+    Martes=cursor.fetchall()
+    cursor.close()
+    conexion.close()
+    actividades_Marte=[]
+    for Litsa2 in Martes:
+        actividades_Marte.append({
+        "id":Litsa2[0],
+        "actividad":Litsa2[1],})
+        return jsonify(actividades_Marte)
+        
     
     
 
