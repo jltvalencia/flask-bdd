@@ -73,10 +73,24 @@ def Martes():
     for Litsa2 in Martes:
         actividades_Marte.append({
         "id":Litsa2[0],
-        "actividad":Litsa2[1],})
+        "actividad":Litsa2[1]
+        })
         return jsonify(actividades_Marte)
-        
-    
+@app.route("/Miercoles")
+def Miercoles ():
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+        cursor.execute("select * from Miercoles")
+        Miercoles= cursor.fetchall()
+        cursor.close()
+        conexion.close()
+        actividades_Miercoles=[]
+        for Lista3 in Miercoles:
+          actividades_Miercoles.append({
+            "id":Lista3[0],
+            "actividades":Lista3[1]
+            })
+          return jsonify(actividades_Miercoles)
     
 
 # Al final de todo archivo .py principal (TOTALMENTE AL BORDE IZQUIERDO)
